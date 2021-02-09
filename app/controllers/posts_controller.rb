@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     end
 
     item = Post.find(params[:id]) # 更新したレコードを取得し直す
-    render json: { post: item } # JSON形式としてchecked.jsにデータを返却
+    render json: { post: item } # JSON形式としてchecked.jsにitemを返却。無効ではpostで受け取る。
   end
 
 end
