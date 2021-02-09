@@ -8,7 +8,7 @@
   color: gray;
 }
 
-/* 条件分岐している */
+/* []内で条件分岐している */
 .post[data-check="true"] {
   background: #585555;
 }
