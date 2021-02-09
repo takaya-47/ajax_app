@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    post = Post.create(content: params[:content], checked: false)
+    render json: {post: post} # json形式でpostをjsにレスポンスとして返す記述
   end
 
     def checked
-    post = Post.find(params[:id]) # ルーティングのURLからパラメーターを取得
+      post = Post.find(params[:id]) # ルーティングのURLからパラメーターを取得
     if post.checked
       post.update(checked: false)
     else
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     end
 
     item = Post.find(params[:id]) # 更新したレコードを取得し直す
-    render json: { post: item } # JSON形式としてchecked.jsにitemを返却。無効ではpostで受け取る。
+    render json: { post: item } # JSON形式としてchecked.jsにitemを返却(レスポンス)。checked.js側ではpostで受け取る。
   end
 
 end
